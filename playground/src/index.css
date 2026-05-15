@@ -1,0 +1,2 @@
+/* Playground entry: pull in SDK styles (includes Tailwind @source for src/) */
+@import "../../src/styles/widget.css";
