@@ -1,105 +1,97 @@
 # @zeeh/kyc-react-sdk
 
-Embeddable React components for Zeeh KYC: full verification flow (`KycWidget`), standalone identity + liveness (`IdentityVerification`), and a typed HTTP client (`createZeehClient`) with injectable auth.
+Embeddable React components for **Zeeh** identity verification: full KYC onboarding, face liveness, document upload, and server-side checks—without wiring dozens of API endpoints yourself.
 
-## Install
+[![npm version](https://img.shields.io/npm/v/@zeeh/kyc-react-sdk)](https://www.npmjs.com/package/@zeeh/kyc-react-sdk)
+
+## Features
+
+- **`<KycWidget />`** — complete KYC flow (email OTP, NIN/BVN, documents, liveness, automated verification)
+- **`<IdentityVerification />`** — session-based ID + liveness for merchant links
+- **`createZeehClient`** — typed HTTP client with injectable auth
+- **Pre-built styles** — import `@zeeh/kyc-react-sdk/style.css`
+- **Mobile-ready** — responsive UI; works in mobile browsers and native WebViews
+
+## Requirements
+
+- React **18** or **19**
+- **HTTPS** in production (camera / liveness)
+- Zeeh **business ID** and **CORS** allowlist for your domain
+
+## Quick start
 
 ```bash
 npm install @zeeh/kyc-react-sdk
 ```
 
-Peer dependencies: `react`, `react-dom` (18+ or 19).
-
-## Styles (Tailwind v4)
-
-Import the compiled stylesheet **once** in your app (before or alongside your own global CSS):
-
-```ts
-import "@zeeh/kyc-react-sdk/style.css";
-```
-
-Alternatively, point your Tailwind v4 `@source` at the package `dist` and rebuild your own bundle (see Tailwind docs for monorepo library scanning).
-
-## Usage
-
-### Full KYC widget
-
 ```tsx
 import { KycWidget } from "@zeeh/kyc-react-sdk";
 import "@zeeh/kyc-react-sdk/style.css";
 
-export function Onboarding() {
+export function VerifyPage() {
   return (
     <KycWidget
       businessId="YOUR_BUSINESS_ID"
-      environment="sandbox" // or "production" | "auto"
-      onComplete={({ sessionId }) => {
-        /* optional */
-      }}
-      onError={(message) => {
-        /* optional */
-      }}
+      environment="sandbox"
+      onComplete={({ sessionId }) => console.log("Done", sessionId)}
     />
   );
 }
 ```
 
-Optional overrides: `mainApiBaseUrl`, `servicesApiOrigin`, `showModeToggle`, `defaultTheme`, `themeStorageKey`.
+## Documentation
 
-### Identity + liveness (session link)
+Full public documentation lives in the **[`docs/`](./docs/README.md)** folder:
 
-```tsx
-import { IdentityVerification } from "@zeeh/kyc-react-sdk";
+| Guide | Description |
+|-------|-------------|
+| [Introduction](./docs/introduction.md) | Overview, architecture, integration patterns |
+| [Getting started](./docs/getting-started.md) | Install, styles, first integration |
+| [Components](./docs/components.md) | Props, callbacks, step reference |
+| [Mobile & native apps](./docs/mobile-integration.md) | WebView, deep links, end-user flow |
+| [Hosting & CORS](./docs/hosting-and-cors.md) | Deploy, HTTPS, environments |
+| [API client](./docs/api-client.md) | `createZeehClient` reference |
+| [Troubleshooting](./docs/troubleshooting.md) | Styling, CORS, camera, verification |
+
+## Exports
+
+```ts
+// Components
+KycWidget, IdentityVerification, VerificationPage, KycProvider
+
+// Client
+createZeehClient, useZeehClient, ZeehClientProvider
+
+// Styles (separate import)
 import "@zeeh/kyc-react-sdk/style.css";
-
-export function IdentityPage({ token }: { token: string }) {
-  return (
-    <IdentityVerification
-      sessionToken={token}
-      environment="production"
-    />
-  );
-}
 ```
 
-### Low-level API client
+## Environments
 
-```tsx
-import { createZeehClient } from "@zeeh/kyc-react-sdk";
+| `environment` | Use case |
+|---------------|----------|
+| `sandbox` | Development / UAT |
+| `production` | Live users |
+| `auto` | Infer from hostname (localhost → sandbox) |
 
-const client = createZeehClient({
-  environment: "production",
-  getAccessToken: () => localStorage.getItem("kyc_token"),
-});
+## Mobile apps
 
-await client.registerUserEmail("user@example.com", businessId);
-```
+This is a **web** SDK. Native iOS/Android apps should load a **hosted HTTPS page** that renders `KycWidget` inside a WebView. See [Mobile integration](./docs/mobile-integration.md).
 
-## Playground
-
-From this repo:
+## Development (this repo)
 
 ```bash
 npm install
-npm run dev
+npm run dev          # playground at http://localhost:5174
+npm run build        # dist/index.js + dist/style.css + types
 ```
 
-Open http://localhost:5174/?businessId=YOUR_ID (defaults to `your-business-id`).
+Playground: `http://localhost:5174/?businessId=YOUR_BUSINESS_ID`
 
-The playground imports [`playground/src/index.css`](playground/src/index.css), which loads the SDK Tailwind bundle. If the UI looks unstyled after changing components, restart `npm run dev` so Tailwind rescans `src/**` (via `@source` in [`src/styles/widget.css`](src/styles/widget.css)).
+## License
 
-## Build
+Proprietary — use subject to your agreement with Zeeh Africa.
 
-```bash
-npm run build:lib
-```
+## Support
 
-Outputs `dist/index.js`, `dist/index.d.ts`, and `dist/style.css`.
-
-## Loan widget
-
-`LoanApplicationWidget` is a placeholder in v0.1. The full loan originator flow remains in the `zeeh-kyc-widget` app under `/l/:uniqueUsername`.
-
-## CORS
-
-Embedded hosts run on their own origins; your Zeeh APIs must allow those origins the same way they allow the standalone widget domain.
+**support@zeeh.africa** — include business ID, environment, device/browser, and failing step when reporting issues.
