@@ -8,10 +8,10 @@ Embeddable React components for **Zeeh** identity verification: full KYC onboard
 npm i @zeehdev/zeeh-kyc-react-sdk
 ```
 
-Peer dependencies (if not already in your app):
+Peer dependencies (install in your app):
 
 ```bash
-npm install react react-dom
+npm install react react-dom zustand framer-motion axios zod
 ```
 
 ## Quick start

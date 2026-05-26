@@ -19,12 +19,16 @@ export default defineConfig({
     },
     cssCodeSplit: false,
     rollupOptions: {
-      external: [
-        "react",
-        "react-dom",
-        "react/jsx-runtime",
-        "face-api.js",
-      ],
+      external: (id) =>
+        id === "react" ||
+        id === "react-dom" ||
+        id === "react/jsx-runtime" ||
+        id === "face-api.js" ||
+        id === "axios" ||
+        id === "zod" ||
+        id === "framer-motion" ||
+        id === "zustand" ||
+        id.startsWith("zustand/"),
       output: {
         assetFileNames: "style[extname]",
       },
