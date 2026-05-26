@@ -11,27 +11,9 @@ This guide walks you from zero to a working KYC screen in a React app.
 
 ## Installation
 
-The package is **`@zeehafrica/zeeh-kyc-react-sdk`**. It is not on public npm yet.
-
-**Quick local install** (SDK repo on your machine):
-
 ```bash
-# In kyc-widget-sdk
-npm run build
-
-# In your React app
-npm install /absolute/path/to/kyc-widget-sdk
+npm i @zeehdev/zeeh-kyc-react-sdk
 ```
-
-**From GitHub:**
-
-```bash
-npm install git+https://github.com/ZeehAfrica/kyc-widget-sdk.git
-```
-
-Do **not** run `npm install @zeeh/kyc-react-sdk` — that name is not on npmjs.com (404).
-
-Full options (GitHub Packages, tarball, publish): **[Installation guide](./installation.md)**.
 
 Ensure peer dependencies are present:
 
@@ -39,13 +21,15 @@ Ensure peer dependencies are present:
 npm install react react-dom
 ```
 
+Other install options: [Installation guide](./installation.md).
+
 ## Import styles (required)
 
 The SDK ships a compiled CSS bundle. Import it **once** at your app entry point:
 
 ```ts
 // main.tsx, _app.tsx, or root layout
-import "@zeehafrica/zeeh-kyc-react-sdk/style.css";
+import "@zeehdev/zeeh-kyc-react-sdk/style.css";
 ```
 
 If you skip this step, components will render but look unstyled (broken layout, stacked icons, missing cards).
@@ -54,8 +38,8 @@ If you skip this step, components will render but look unstyled (broken layout, 
 
 ```tsx
 // src/pages/KycPage.tsx
-import { KycWidget } from "@zeehafrica/zeeh-kyc-react-sdk";
-import "@zeehafrica/zeeh-kyc-react-sdk/style.css";
+import { KycWidget } from "@zeehdev/zeeh-kyc-react-sdk";
+import "@zeehdev/zeeh-kyc-react-sdk/style.css";
 
 export function KycPage() {
   return (
@@ -97,7 +81,7 @@ The SDK resolves API bases automatically:
 | Sandbox | `https://dev.main-api.usezeeh.com/api/v1` | `https://staging.api.usezeeh.com` |
 | Production | `https://main-api.usezeeh.com/api/v1` | `https://api.usezeeh.com` |
 
-Override only if Zeeh provides custom endpoints:
+Override only if Zeeh gives you custom endpoints:
 
 ```tsx
 <KycWidget
@@ -117,7 +101,7 @@ Override only if Zeeh provides custom endpoints:
 The SDK repository includes a playground:
 
 ```bash
-git clone <kyc-widget-sdk-repo>
+git clone https://github.com/ZeehAfrica/kyc-widget-sdk.git
 cd kyc-widget-sdk
 npm install
 npm run dev
@@ -152,8 +136,8 @@ Open `http://localhost:5174/?businessId=YOUR_BUSINESS_ID`.
 If your backend creates a liveness session with Zeeh and returns a token:
 
 ```tsx
-import { IdentityVerification } from "@zeehafrica/zeeh-kyc-react-sdk";
-import "@zeehafrica/zeeh-kyc-react-sdk/style.css";
+import { IdentityVerification } from "@zeehdev/zeeh-kyc-react-sdk";
+import "@zeehdev/zeeh-kyc-react-sdk/style.css";
 
 export function IdentityPage({ token }: { token: string }) {
   return (

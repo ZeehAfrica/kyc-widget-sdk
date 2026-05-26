@@ -1,5 +1,5 @@
 {
-  "name": "@zeehng/zeeh-kyc-react-sdk",
+  "name": "@zeehdev/zeeh-kyc-react-sdk",
   "version": "1.2.0",
   "description": "Embeddable Zeeh KYC React widget: verification flows, face liveness, and typed API client.",
   "type": "module",

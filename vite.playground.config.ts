@@ -8,7 +8,7 @@ export default defineConfig({
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
-      "@zeehafrica/zeeh-kyc-react-sdk": path.resolve(__dirname, "src/index.ts"),
+      "@zeehdev/zeeh-kyc-react-sdk": path.resolve(__dirname, "src/index.ts"),
       "@": path.resolve(__dirname, "src"),
     },
   },

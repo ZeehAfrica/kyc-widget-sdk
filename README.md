@@ -1,13 +1,45 @@
-# @zeehafrica/zeeh-kyc-react-sdk
+# @zeehdev/zeeh-kyc-react-sdk
 
 Embeddable React components for **Zeeh** identity verification: full KYC onboarding, face liveness, document upload, and server-side checks—without wiring dozens of API endpoints yourself.
+
+## Installation
+
+```bash
+npm i @zeehdev/zeeh-kyc-react-sdk
+```
+
+Peer dependencies (if not already in your app):
+
+```bash
+npm install react react-dom
+```
+
+## Quick start
+
+Import the stylesheet **once** at your app entry, then mount the widget:
+
+```tsx
+import { KycWidget } from "@zeehdev/zeeh-kyc-react-sdk";
+import "@zeehdev/zeeh-kyc-react-sdk/style.css";
+
+export function VerifyPage() {
+  return (
+    <KycWidget
+      businessId="YOUR_BUSINESS_ID"
+      environment="sandbox"
+      onComplete={({ sessionId }) => console.log("Done", sessionId)}
+      onError={(message) => console.error(message)}
+    />
+  );
+}
+```
 
 ## Features
 
 - **`<KycWidget />`** — complete KYC flow (email OTP, NIN/BVN, documents, liveness, automated verification)
 - **`<IdentityVerification />`** — session-based ID + liveness for merchant links
 - **`createZeehClient`** — typed HTTP client with injectable auth
-- **Pre-built styles** — import `@zeehafrica/zeeh-kyc-react-sdk/style.css`
+- **Pre-built styles** — `@zeehdev/zeeh-kyc-react-sdk/style.css`
 - **Mobile-ready** — responsive UI; works in mobile browsers and native WebViews
 
 ## Requirements
@@ -16,66 +48,14 @@ Embeddable React components for **Zeeh** identity verification: full KYC onboard
 - **HTTPS** in production (camera / liveness)
 - Zeeh **business ID** and **CORS** allowlist for your domain
 
-## Installation
+## Package exports
 
-> **`npm install @zeeh/kyc-react-sdk` returns 404** — that package is not on [npmjs.com](https://www.npmjs.com).  
-> Use the scoped name **`@zeehafrica/zeeh-kyc-react-sdk`** (GitHub Packages or local/git install).
-
-See **[docs/installation.md](./docs/installation.md)** for all options.
-
-### Quick: local path
-
-```bash
-cd /path/to/kyc-widget-sdk && npm install && npm run build
-cd /path/to/your-app
-npm install /path/to/kyc-widget-sdk
+```ts
+import { KycWidget } from "@zeehdev/zeeh-kyc-react-sdk";
+import { IdentityVerification } from "@zeehdev/zeeh-kyc-react-sdk";
+import { createZeehClient } from "@zeehdev/zeeh-kyc-react-sdk";
+import "@zeehdev/zeeh-kyc-react-sdk/style.css";
 ```
-
-### Quick: from GitHub
-
-```bash
-npm install git+https://github.com/ZeehAfrica/kyc-widget-sdk.git
-```
-
-### Quick: GitHub Packages (after publish)
-
-```bash
-# ~/.npmrc — use a PAT with read:packages, never commit the token
-# @zeehafrica:registry=https://npm.pkg.github.com
-# //npm.pkg.github.com/:_authToken=...
-
-npm install @zeehafrica/zeeh-kyc-react-sdk
-```
-
-## Quick start
-
-```tsx
-import { KycWidget } from "@zeehafrica/zeeh-kyc-react-sdk";
-import "@zeehafrica/zeeh-kyc-react-sdk/style.css";
-
-export function VerifyPage() {
-  return (
-    <KycWidget
-      businessId="YOUR_BUSINESS_ID"
-      environment="sandbox"
-      onComplete={({ sessionId }) => console.log("Done", sessionId)}
-    />
-  );
-}
-```
-
-## Documentation
-
-| Guide | Description |
-|-------|-------------|
-| **[Installation](./docs/installation.md)** | Fix 404 / git errors; local, GitHub, Packages |
-| [Introduction](./docs/introduction.md) | Overview, architecture, integration patterns |
-| [Getting started](./docs/getting-started.md) | Styles, first integration |
-| [Components](./docs/components.md) | Props, callbacks, step reference |
-| [Mobile & native apps](./docs/mobile-integration.md) | WebView, deep links, end-user flow |
-| [Hosting & CORS](./docs/hosting-and-cors.md) | Deploy, HTTPS, environments |
-| [API client](./docs/api-client.md) | `createZeehClient` reference |
-| [Troubleshooting](./docs/troubleshooting.md) | Styling, CORS, camera, verification |
 
 ## Environments
 
@@ -84,6 +64,19 @@ export function VerifyPage() {
 | `sandbox` | Development / UAT |
 | `production` | Live users |
 | `auto` | Infer from hostname (localhost → sandbox) |
+
+## Documentation
+
+| Guide | Description |
+|-------|-------------|
+| [Getting started](./docs/getting-started.md) | First integration, environments, callbacks |
+| [Installation](./docs/installation.md) | npm, local path, GitHub alternatives |
+| [Introduction](./docs/introduction.md) | Overview, architecture, integration patterns |
+| [Components](./docs/components.md) | Props, callbacks, step reference |
+| [Mobile & native apps](./docs/mobile-integration.md) | WebView, deep links, end-user flow |
+| [Hosting & CORS](./docs/hosting-and-cors.md) | Deploy, HTTPS, CORS |
+| [API client](./docs/api-client.md) | `createZeehClient` reference |
+| [Troubleshooting](./docs/troubleshooting.md) | Styling, CORS, camera, verification |
 
 ## Mobile apps
 
@@ -103,7 +96,7 @@ Playground: `http://localhost:5174/?businessId=YOUR_BUSINESS_ID`
 
 ```bash
 npm run build
-npm publish   # GitHub Packages (@zeehafrica scope)
+npm publish --access public
 ```
 
 ## Support

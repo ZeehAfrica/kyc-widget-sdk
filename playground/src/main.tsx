@@ -1,7 +1,7 @@
 import "./index.css";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { KycWidget } from "@zeehafrica/zeeh-kyc-react-sdk";
+import { KycWidget } from "@zeehdev/zeeh-kyc-react-sdk";
 
 const params = new URLSearchParams(window.location.search);
 const businessId = params.get("businessId") ?? "your-business-id";

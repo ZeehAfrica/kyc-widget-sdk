@@ -9,7 +9,7 @@ export function LoanApplicationWidget() {
       role="note"
       className="rounded-lg border border-dashed p-4 text-sm text-muted-foreground"
     >
-      Loan originator widget is not included in <code>@zeehafrica/zeeh-kyc-react-sdk</code>{" "}
+      Loan originator widget is not included in <code>@zeehdev/zeeh-kyc-react-sdk</code>{" "}
       v0.1. See the package README for integration options.
     </div>
   );
