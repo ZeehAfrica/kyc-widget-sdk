@@ -2,7 +2,7 @@
 
 ## Overview
 
-The **Zeeh KYC React SDK** (`@zeeh/kyc-react-sdk`) lets you embed a complete Know Your Customer (KYC) experience inside your own React application. Instead of calling dozens of Zeeh HTTP endpoints yourself, you mount a single component, import one stylesheet, and handle a few callbacks when verification completes or fails.
+The **Zeeh KYC React SDK** (`@zeehafrica/zeeh-kyc-react-sdk`) lets you embed a complete Know Your Customer (KYC) experience inside your own React application. Instead of calling dozens of Zeeh HTTP endpoints yourself, you mount a single component, import one stylesheet, and handle a few callbacks when verification completes or fails.
 
 The SDK includes:
 
@@ -73,7 +73,7 @@ await client.registerUserEmail(email, businessId);
 ┌─────────────────────────────────────────────────────────┐
 │  Your React app (your domain, HTTPS)                     │
 │  ┌───────────────────────────────────────────────────┐  │
-│  │  @zeeh/kyc-react-sdk                               │  │
+│  │  @zeehafrica/zeeh-kyc-react-sdk                               │  │
 │  │  • UI steps + Zustand state                        │  │
 │  │  • face-api.js liveness (client)                   │  │
 │  │  • createZeehClient → axios                        │  │
@@ -88,12 +88,12 @@ await client.registerUserEmail(email, businessId);
 
 ## Package contents
 
-After `npm install @zeeh/kyc-react-sdk`:
+After `npm install @zeehafrica/zeeh-kyc-react-sdk`:
 
 | Export | Description |
 |--------|-------------|
-| `@zeeh/kyc-react-sdk` | Components, hooks, client factory |
-| `@zeeh/kyc-react-sdk/style.css` | Pre-built Tailwind styles (required) |
+| `@zeehafrica/zeeh-kyc-react-sdk` | Components, hooks, client factory |
+| `@zeehafrica/zeeh-kyc-react-sdk/style.css` | Pre-built Tailwind styles (required) |
 
 ## Next steps
 

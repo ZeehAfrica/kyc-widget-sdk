@@ -1,0 +1,13 @@
+src/
+public/
+docs/
+templates/
+amplify.yml
+eslint.config.js
+tailwind.config.js
+vite.config.ts
+tsconfig*.json
+components.json
+index.html
+*.tgz
+.npmrc

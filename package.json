@@ -20,6 +20,7 @@
     "**/*.css"
   ],
   "scripts": {
+    "prepare": "npm run build",
     "dev": "vite -c vite.playground.config.ts",
     "build": "vite build && npx tsc -p tsconfig.emit.json && npx tsc-alias -p tsconfig.emit.json",
     "build:lib": "vite build",
@@ -85,11 +86,8 @@
     "typescript-eslint": "^8.30.1",
     "vite": "^6.3.5"
   },
-  "publishConfig": {
-  "registry": "https://npm.pkg.github.com"
-},
 "repository": {
   "type": "git",
-  "url": "git+https://github.com/zeehAfrica/kyc-widget-sdk.git"
+  "url": "git+https://github.com/ZeehAfrica/kyc-widget-sdk.git"
 }
 }

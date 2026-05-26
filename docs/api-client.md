@@ -5,7 +5,7 @@ For custom UIs or server-adjacent logic, use **`createZeehClient`** instead of c
 ## createZeehClient
 
 ```ts
-import { createZeehClient } from "@zeeh/kyc-react-sdk";
+import { createZeehClient } from "@zeehafrica/zeeh-kyc-react-sdk";
 
 const client = createZeehClient({
   environment: "production",
@@ -31,7 +31,7 @@ The HTTP layer **does not** read global app state. Pass tokens explicitly via `g
 Inside components wrapped by `KycProvider`:
 
 ```tsx
-import { useZeehClient } from "@zeeh/kyc-react-sdk";
+import { useZeehClient } from "@zeehafrica/zeeh-kyc-react-sdk";
 
 function MyStep() {
   const client = useZeehClient();
@@ -107,7 +107,7 @@ import {
   isMouthOpen,
   DEFAULT_FACE_API_MODEL_URI,
   useFrameCounter,
-} from "@zeeh/kyc-react-sdk";
+} from "@zeehafrica/zeeh-kyc-react-sdk";
 ```
 
 | Export | Purpose |

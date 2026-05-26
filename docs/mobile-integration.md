@@ -143,7 +143,7 @@ What your users should expect:
 
 ## React Native
 
-There is **no** `@zeeh/kyc-react-sdk` React Native package in v0.1.
+There is **no** `@zeehafrica/zeeh-kyc-react-sdk` React Native package in v0.1.
 
 Options:
 
@@ -159,7 +159,7 @@ Treat as mobile web: wrap your React build in Capacitor WebView. Ensure:
 
 - `android:usesCleartextTraffic` is false in production (HTTPS only)  
 - iOS `NSCameraUsageDescription` explains why camera is needed  
-- Import `@zeeh/kyc-react-sdk/style.css` in the web bundle  
+- Import `@zeehafrica/zeeh-kyc-react-sdk/style.css` in the web bundle  
 
 ---
 

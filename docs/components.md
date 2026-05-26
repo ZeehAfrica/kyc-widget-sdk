@@ -7,8 +7,8 @@ Renders the full end-user KYC flow for a Zeeh business.
 ### Import
 
 ```tsx
-import { KycWidget } from "@zeeh/kyc-react-sdk";
-import "@zeeh/kyc-react-sdk/style.css";
+import { KycWidget } from "@zeehafrica/zeeh-kyc-react-sdk";
+import "@zeehafrica/zeeh-kyc-react-sdk/style.css";
 ```
 
 ### Props
@@ -84,8 +84,8 @@ Standalone flow for a **pre-created** Zeeh liveness session (merchant link).
 ### Import
 
 ```tsx
-import { IdentityVerification } from "@zeeh/kyc-react-sdk";
-import "@zeeh/kyc-react-sdk/style.css";
+import { IdentityVerification } from "@zeehafrica/zeeh-kyc-react-sdk";
+import "@zeehafrica/zeeh-kyc-react-sdk/style.css";
 ```
 
 ### Props
@@ -136,7 +136,7 @@ import {
   KycProvider,
   VerificationPage,
   WidgetRuntimeConfigProvider,
-} from "@zeeh/kyc-react-sdk";
+} from "@zeehafrica/zeeh-kyc-react-sdk";
 ```
 
 You must wrap with `KycProvider` and `WidgetRuntimeConfigProvider` yourself. Most apps should use `KycWidget` instead.
@@ -148,8 +148,8 @@ You must wrap with `KycProvider` and `WidgetRuntimeConfigProvider` yourself. Mos
 Provides HTTP client context when building custom layouts:
 
 ```tsx
-import { KycProvider } from "@zeeh/kyc-react-sdk";
-import { useKycStore } from "@zeeh/kyc-react-sdk";
+import { KycProvider } from "@zeehafrica/zeeh-kyc-react-sdk";
+import { useKycStore } from "@zeehafrica/zeeh-kyc-react-sdk";
 
 <KycProvider
   environment="production"

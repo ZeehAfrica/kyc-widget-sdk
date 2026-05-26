@@ -9,7 +9,7 @@
 **Fix:**
 
 ```ts
-import "@zeeh/kyc-react-sdk/style.css";
+import "@zeehafrica/zeeh-kyc-react-sdk/style.css";
 ```
 
 Import at app entry (`main.tsx`, `_app.tsx`, root layout). Restart dev server after adding.

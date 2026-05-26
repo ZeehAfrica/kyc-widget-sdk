@@ -1,11 +1,12 @@
 # Zeeh KYC React SDK — Documentation
 
-Official documentation for **@zeeh/kyc-react-sdk**, the embeddable React library for Zeeh identity verification, document capture, and face liveness.
+Official documentation for **@zeehafrica/zeeh-kyc-react-sdk**, the embeddable React library for Zeeh identity verification, document capture, and face liveness.
 
 ## Documentation index
 
 | Guide | Description |
 |-------|-------------|
+| [Installation](./installation.md) | **Start here if `npm install` fails (404)** — local, Git, GitHub Packages |
 | [Introduction](./introduction.md) | What the SDK is, supported platforms, and architecture |
 | [Getting started](./getting-started.md) | Install, styles, first integration in minutes |
 | [Components](./components.md) | `KycWidget`, `IdentityVerification`, props and callbacks |
@@ -16,9 +17,9 @@ Official documentation for **@zeeh/kyc-react-sdk**, the embeddable React library
 
 ## Quick links
 
-- **npm package:** `@zeeh/kyc-react-sdk`
+- **npm package:** `@zeehafrica/zeeh-kyc-react-sdk` (GitHub Packages or local/git — not on public npmjs.com yet)
 - **Peer dependencies:** `react`, `react-dom` (18+ or 19)
-- **Styles entry:** `@zeeh/kyc-react-sdk/style.css`
+- **Styles entry:** `@zeehafrica/zeeh-kyc-react-sdk/style.css`
 
 ## Support
 

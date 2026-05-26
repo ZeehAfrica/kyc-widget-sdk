@@ -28,8 +28,8 @@ Local development may use `http://localhost`; test liveness on HTTPS staging bef
 Your app bundle includes:
 
 - Your React code  
-- `@zeeh/kyc-react-sdk` JavaScript (from `node_modules` or bundled)  
-- `@zeeh/kyc-react-sdk/style.css` imported in entry  
+- `@zeehafrica/zeeh-kyc-react-sdk` JavaScript (from `node_modules` or bundled)  
+- `@zeehafrica/zeeh-kyc-react-sdk/style.css` imported in entry  
 
 You do **not** host the SDK repo separately unless you choose a **hosted-only** model (single-purpose verify site).
 
@@ -162,7 +162,7 @@ Published `files`: `dist/` only (`index.js`, `index.d.ts`, `style.css`).
 Merchants pin versions:
 
 ```json
-"@zeeh/kyc-react-sdk": "^0.1.0"
+"@zeehafrica/zeeh-kyc-react-sdk": "^0.1.0"
 ```
 
 ---
