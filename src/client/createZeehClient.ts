@@ -4,6 +4,8 @@ import axios, { AxiosHeaders, type AxiosInstance } from "axios";
 
 const PROD_URL = `https://main-api.usezeeh.com/api/v1`;
 const DEV_URL = `https://dev.main-api.usezeeh.com/api/v1`;
+const PROD_SERVICES_ORIGIN = "https://api.usezeeh.com";
+const DEV_SERVICES_ORIGIN = "https://staging.api.usezeeh.com";
 
 export type ZeehEnvironment = "production" | "sandbox" | "auto";
 
@@ -40,12 +42,21 @@ function resolveMainApiBase(config: ZeehClientConfig): string {
 
 function resolveServicesOrigin(config: ZeehClientConfig): string {
   const fromEnv = import.meta.env?.VITE_ZEEH_SERVICES_API_ORIGIN;
-  const url =
+  const override =
     config.servicesApiOrigin?.trim() ||
-    (typeof fromEnv === "string" && fromEnv.trim()) ||
-    (isDevEnvironment()
-      ? "https://staging.api.usezeeh.com"
-      : "https://api.usezeeh.com");
+    (typeof fromEnv === "string" ? fromEnv.trim() : "");
+
+  let url: string;
+  if (override) {
+    url = override;
+  } else if (config.environment === "production") {
+    url = PROD_SERVICES_ORIGIN;
+  } else if (config.environment === "sandbox") {
+    url = DEV_SERVICES_ORIGIN;
+  } else {
+    url = isDevEnvironment() ? DEV_SERVICES_ORIGIN : PROD_SERVICES_ORIGIN;
+  }
+
   return url.replace(/\/$/, "").replace(/\/api\/v1$/, "");
 }
 
